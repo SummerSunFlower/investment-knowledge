@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专业投资者知识体系 — 经济 × 地缘</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #21262d;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --accent: #58a6ff;
+    --accent2: #f78166;
+    --accent3: #56d364;
+    --accent4: #d2a8ff;
+    --accent5: #ffa657;
+    --accent6: #79c0ff;
+    --gold: #e3b341;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  .hero {
+    background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 40%, #0d1b2a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(88,166,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 50%;
+    height: 180%;
+    background: radial-gradient(ellipse, rgba(210,168,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(88,166,255,0.15);
+    border: 1px solid rgba(88,166,255,0.3);
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    background: linear-gradient(135deg, #e6edf3 0%, #58a6ff 50%, #d2a8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    color: var(--text2);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .hero-stat .label {
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* ===== NAV ===== */
+  .nav-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    padding: 16px 20px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+  }
+  .nav-pill {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text2);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-pill:hover { background: var(--bg3); color: var(--text); border-color: var(--accent); }
+  .nav-pill.active { background: var(--accent); color: #0d1117; border-color: var(--accent); font-weight: 600; }
+
+  /* ===== SECTION ===== */
+  .section {
+    margin-bottom: 60px;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+
+  /* ===== GRID ===== */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+  /* ===== CARD ===== */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ===== KNOWLEDGE ITEMS ===== */
+  .k-list { list-style: none; }
+  .k-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(48,54,61,0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .k-item:last-child { border-bottom: none; }
+  .k-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .k-desc {
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+  .k-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .tag-red { background: rgba(247,129,102,0.15); color: #f78166; border: 1px solid rgba(247,129,102,0.3); }
+  .tag-blue { background: rgba(88,166,255,0.12); color: #79c0ff; border: 1px solid rgba(88,166,255,0.25); }
+  .tag-green { background: rgba(86,211,100,0.12); color: #56d364; border: 1px solid rgba(86,211,100,0.25); }
+  .tag-purple { background: rgba(210,168,255,0.12); color: #d2a8ff; border: 1px solid rgba(210,168,255,0.25); }
+  .tag-gold { background: rgba(227,179,65,0.12); color: #e3b341; border: 1px solid rgba(227,179,65,0.25); }
+  .tag-orange { background: rgba(255,166,87,0.12); color: #ffa657; border: 1px solid rgba(255,166,87,0.25); }
+
+  /* ===== FRAMEWORK BOX ===== */
+  .framework-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .framework-header {
+    padding: 14px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .framework-body {
+    padding: 16px 20px;
+  }
+
+  /* ===== CYCLE DIAGRAM ===== */
+  .cycle-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .cycle-phase {
+    flex: 1;
+    min-width: 120px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .cycle-phase:first-child { border-radius: 8px 0 0 8px; }
+  .cycle-phase:last-child { border-radius: 0 8px 8px 0; }
+  .cycle-phase + .cycle-phase { border-left: none; }
+  .cycle-phase .phase-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .cycle-phase .phase-detail { font-size: 11px; color: var(--text2); line-height: 1.4; }
+  .cycle-arrow {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text2);
+    font-size: 16px;
+    z-index: 2;
+    background: var(--bg2);
+    padding: 0 2px;
+  }
+
+  /* ===== MATRIX TABLE ===== */
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .matrix-table th {
+    background: var(--bg3);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .matrix-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .matrix-table tr:hover td { background: rgba(33,38,45,0.5); }
+
+  /* ===== ALERT BOX ===== */
+  .alert {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    border-left: 3px solid;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .alert-blue { background: rgba(88,166,255,0.08); border-color: var(--accent); }
+  .alert-gold { background: rgba(227,179,65,0.08); border-color: var(--gold); }
+  .alert-red { background: rgba(247,129,102,0.08); border-color: var(--accent2); }
+  .alert-green { background: rgba(86,211,100,0.08); border-color: var(--accent3); }
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .alert-text { color: var(--text2); line-height: 1.6; }
+  .alert-text strong { color: var(--text); }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 20px 20px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .tl-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .tl-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+  /* ===== PILLAR ===== */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+  }
+  .pillar {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .pillar:hover { border-color: var(--accent); }
+  .pillar-icon { font-size: 28px; margin-bottom: 10px; }
+  .pillar-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .pillar-desc { font-size: 12px; color: var(--text2); line-height: 1.4; }
+
+  /* ===== QUOTE ===== */
+  .quote-box {
+    border-left: 3px solid var(--gold);
+    padding: 12px 20px;
+    background: rgba(227,179,65,0.05);
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--text2);
+    font-size: 14px;
+  }
+  .quote-box strong { color: var(--gold); font-style: normal; }
+
+  /* ===== CHECKLIST ===== */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 7px 0;
+    padding-left: 24px;
+    position: relative;
+    font-size: 13px;
+    color: var(--text2);
+    border-bottom: 1px solid rgba(48,54,61,0.4);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    font-size: 8px;
+    top: 10px;
+  }
+  .checklist li strong { color: var(--text); }
+
+  /* ===== BADGE ===== */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-1 { background: rgba(88,166,255,0.15); color: #58a6ff; }
+  .badge-2 { background: rgba(86,211,100,0.15); color: #56d364; }
+  .badge-3 { background: rgba(210,168,255,0.15); color: #d2a8ff; }
+  .badge-4 { background: rgba(247,129,102,0.15); color: #f78166; }
+  .badge-5 { background: rgba(227,179,65,0.15); color: #e3b341; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text2);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 60px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero { padding: 40px 20px 30px; }
+    .container { padding: 24px 16px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .cycle-row { flex-direction: column; }
+    .cycle-phase { border-radius: 8px !important; border-left: 1px solid var(--border) !important; }
+    .cycle-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Professional Investor Knowledge System</div>
+  <h1>专业投资者知识体系<br>经济 × 地缘</h1>
+  <p>系统梳理宏观经济、货币政策、地缘政治与全球市场的核心知识框架，构建投资认知底层</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">6</div><div class="label">核心知识模块</div></div>
+    <div class="hero-stat"><div class="num">40+</div><div class="label">关键概念</div></div>
+    <div class="hero-stat"><div class="num">15+</div><div class="label">分析框架</div></div>
+    <div class="hero-stat"><div class="num">∞</div><div class="label">持续迭代</div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="container">
+<nav class="nav-pills">
+  <a href="#macro" class="nav-pill active">🏛️ 宏观经济</a>
+  <a href="#monetary" class="nav-pill">🏦 货币体系</a>
+  <a href="#cycle" class="nav-pill">🔄 经济周期</a>
+  <a href="#geopolitics" class="nav-pill">🌍 地缘政治</a>
+  <a href="#markets" class="nav-pill">📊 市场结构</a>
+  <a href="#framework" class="nav-pill">🧠 分析框架</a>
+</nav>
+
+<!-- ===================== SECTION 1: 宏观经济 ===================== -->
+<section class="section" id="macro">
+  <div class="section-header">
+    <div class="section-icon" style="background: rgba(88,166,255,0.15);">🏛️</div>
+    <div>
+      <div class="section-title">模块一：宏观经济基础</div>
+      <div class="section-subtitle">经济运行的底层逻辑与核心指标体系</div>
+    </div>
+  </div>
+
+  <div class="alert alert-blue">
+    <div class="alert-icon">💡</div>
+    <div class="alert-text"><strong>核心认知：</strong>宏观经济是所有资产定价的底层操作系统。理解经济运行逻辑，才能在噪音中识别信号。</div>
+  </div>
+
+  <div class="grid-2">
+    <!-- GDP与增长 -->
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#58a6ff"></div>GDP与经济增长</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">GDP三大核算方法</div>
+          <div class="k-desc">支出法（C+I+G+NX）、收入法、生产法；理解三者差异是分析经济结构的基础</div>
+          <div class="k-tags"><span class="tag tag-blue">基础</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">潜在GDP与产出缺口</div>
+          <div class="k-desc">实际GDP与潜在GDP之差；正缺口→通胀压力，负缺口→衰退风险，直接影响央行决策</div>
+          <div class="k-tags"><span class="tag tag-blue">核心</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">名义GDP vs 实际GDP</div>
+          <div class="k-desc">GDP平减指数 = 名义GDP/实际GDP；通胀会虚增名义数字，投资需看实际增长率</div>
+          <div class="k-tags"><span class="tag tag-gold">注意</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">经济增长驱动因素</div>
+          <div class="k-desc">劳动力增长、资本积累、全要素生产率（TFP）；TFP是长期富强的唯一来源</div>
+          <div class="k-tags"><span class="tag tag-purple">深度</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 通胀体系 -->
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#f78166"></div>通货膨胀体系</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">CPI / PCE / PPI 三角</div>
+          <div class="k-desc">CPI：消费者物价；PCE：美联储偏好指标；PPI：生产者物价（领先CPI约3-6个月）</div>
+          <div class="k-tags"><span class="tag tag-blue">核心</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">核心通胀 vs 标题通胀</div>
+          <div class="k-desc">剔除能源与食品的核心通胀更能反映结构性价格压力；是央行决策的主要参考</div>
+          <div class="k-tags"><span class="tag tag-blue">核心</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">通胀的三类成因</div>
+          <div class="k-desc">需求拉动（需求过热）、成本推动（供给冲击）、结构性/预期（工资-物价螺旋）</div>
+          <div class="k-tags"><span class="tag tag-purple">分析</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">通缩与滞胀</div>
+          <div class="k-desc">通缩：债务紧缩螺旋，最难应对；滞胀：高通胀+低增长，政策两难，如1970s美国</div>
+          <div class="k-tags"><span class="tag tag-red">风险</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 就业市场 -->
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#56d364"></div>就业市场指标</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">失业率与自然失业率 (NAIRU)</div>
+          <div class="k-desc">当失业率低于NAIRU时，工资通胀压力上升；美联储双重使命之一即"充分就业"</div>
+          <div class="k-tags"><span class="tag tag-blue">核心</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">非农就业 (NFP)</div>
+          <div class="k-desc">美国每月第一个周五公布；单月超预期大增→加息预期升温→美元走强、债券下跌</div>
+          <div class="k-tags"><span class="tag tag-gold">市场敏感</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">劳动参与率</div>
+          <div class="k-desc">失业率下降可能是因为人们放弃找工作，需结合劳动参与率综合判断就业真实健康度</div>
+          <div class="k-tags"><span class="tag tag-purple">深度</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">萨姆规则 (Sahm Rule)</div>
+          <div class="k-desc">3个月平均失业率比过去12个月低点上升≥0.5%，历史上100%触发衰退</div>
+          <div class="k-tags"><span class="tag tag-red">预警</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 财政政策 -->
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#d2a8ff"></div>财政政策</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">财政赤字与债务/GDP比率</div>
+          <div class="k-desc">高债务国面临融资压力；债务货币化（央行购债）→通胀；债务危机→货币危机链条</div>
+          <div class="k-tags"><span class="tag tag-red">风险</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">财政乘数效应</div>
+          <div class="k-desc">政府支出对GDP的拉动倍数；流动性陷阱时乘数>1（凯恩斯主义），正常时期<1</div>
+          <div class="k-tags"><span class="tag tag-purple">理论</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">赤字货币化 vs 国债市场融资</div>
+          <div class="k-desc">MMT理论认为主权货币国可无限印钞，但历史证明通胀约束真实存在</div>
+          <div class="k-tags"><span class="tag tag-gold">争议</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">李嘉图等价定理</div>
+          <div class="k-desc">理性预期下财政刺激被储蓄抵消；实际中部分有效但被预期效应削弱</div>
+          <div class="k-tags"><span class="tag tag-blue">理论</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 关键数据日历 -->
+  <div class="framework-box" style="margin-top: 20px;">
+    <div class="framework-header" style="background: rgba(88,166,255,0.08); border-bottom: 1px solid var(--border);">
+      📅 投资者必跟的重要经济数据日历
+    </div>
+    <div class="framework-body">
+      <table class="matrix-table">
+        <tr>
+          <th>频率</th>
+          <th>美国</th>
+          <th>中国</th>
+          <th>欧元区</th>
+          <th>市场影响</th>
+        </tr>
+        <tr>
+          <td>月度</td>
+          <td>NFP、CPI、PCE、ISM PMI</td>
+          <td>CPI、PPI、PMI、社融、M2</td>
+          <td>CPI、PMI、失业率</td>
+          <td><span class="badge badge-1">★★★★★</span></td>
+        </tr>
+        <tr>
+          <td>季度</td>
+          <td>GDP初值/修正值、EPS季报季</td>
+          <td>GDP、固定资产投资、消费零售</td>
+          <td>GDP、ECB利率决议</td>
+          <td><span class="badge badge-2">★★★★</span></td>
+        </tr>
+        <tr>
+          <td>不定期</td>
+          <td>FOMC会议纪要、Jackson Hole</td>
+          <td>中央经济工作会议、政治局会议</td>
+          <td>欧洲央行前瞻指引</td>
+          <td><span class="badge badge-4">市场转折</span></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 2: 货币体系 ===================== -->
+<section class="section" id="monetary">
+  <div class="section-header">
+    <div class="section-icon" style="background: rgba(210,168,255,0.15);">🏦</div>
+    <div>
+      <div class="section-title">模块二：货币体系与央行政策</div>
+      <div class="section-subtitle">理解"印钞机"的运作逻辑是现代投资的核心能力</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#d2a8ff"></div>货币政策工具箱</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">联邦基金利率 / 基准利率</div>
+          <div class="k-desc">短端利率的锚点；通过影响借贷成本传导至全经济；加息周期→股债双杀初期</div>
+          <div class="k-tags"><span class="tag tag-blue">核心</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">量化宽松 QE vs 量化紧缩 QT</div>
+          <div class="k-desc">QE：央行购买长期债券→压低长端利率→资产价格上涨；QT：缩表→流动性收缩</div>
+          <div class="k-tags"><span class="tag tag-blue">核心</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">前瞻指引 (Forward Guidance)</div>
+          <div class="k-desc">央行通过预告政策路径来管理市场预期；语言本身即工具，"鸽派"/"鹰派"措辞精读</div>
+          <div class="k-tags"><span class="tag tag-gold">市场敏感</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">准备金率 / 存款便利利率</div>
+          <div class="k-desc">超额准备金利率(IOER)成为新型政策工具；中国降准是重要宽松信号</div>
+          <div class="k-tags"><span class="tag tag-green">中国视角</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#ffa657"></div>利率曲线解读</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">收益率曲线形态</div>
+          <div class="k-desc">正常：长端>短端；倒挂：短端>长端（历史上衰退领先指标）；平坦化：过渡期</div>
+          <div class="k-tags"><span class="tag tag-red">预警</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">10Y-2Y 利差倒挂</div>
+          <div class="k-desc">1976年以来每次衰退前均出现倒挂；但从倒挂到衰退通常有6-24个月时滞</div>
+          <div class="k-tags"><span class="tag tag-red">核心预警</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">期限溢价 (Term Premium)</div>
+          <div class="k-desc">投资者持有长期债券要求的额外回报；上升→长端利率上行压力→成长股承压</div>
+          <div class="k-tags"><span class="tag tag-purple">深度</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">实际利率 = 名义利率 - 通胀预期</div>
+          <div class="k-desc">实际利率是黄金定价的核心变量；实际利率上升→黄金承压，下降→黄金走强</div>
+          <div class="k-tags"><span class="tag tag-gold">资产定价</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#58a6ff"></div>货币供给体系</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">M0 / M1 / M2 / M3 分层</div>
+          <div class="k-desc">M0：现钞；M1：活期+现钞；M2：M1+定期存款；M2增速是流动性宽松程度的晴雨表</div>
+          <div class="k-tags"><span class="tag tag-blue">基础</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">社会融资规模 (中国特色)</div>
+          <div class="k-desc">比M2更全面反映中国实体经济融资状况；包含表外融资、债券、股权等</div>
+          <div class="k-tags"><span class="tag tag-green">中国</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">货币传导机制</div>
+          <div class="k-desc">基础货币→商业银行信贷扩张→广义货币；货币乘数在流动性陷阱时大幅萎缩</div>
+          <div class="k-tags"><span class="tag tag-purple">机制</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">美元流动性周期</div>
+          <div class="k-desc">美元是全球流动性之锚；美元走强→新兴市场流动性收紧→资本外流→汇率贬值链条</div>
+          <div class="k-tags"><span class="tag tag-red">全球风险</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#56d364"></div>国际货币体系</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">布雷顿森林体系的遗产</div>
+          <div class="k-desc">1971年尼克松关闭黄金窗口→美元信用货币时代；理解这一转变对通胀史至关重要</div>
+          <div class="k-tags"><span class="tag tag-blue">历史</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">石油美元体系</div>
+          <div class="k-desc">原油以美元计价 = 全球对美元的持续需求；若去美元化加速，美债需求下降风险</div>
+          <div class="k-tags"><span class="tag tag-gold">地缘</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">特里芬困境</div>
+          <div class="k-desc">储备货币国必须保持贸易逆差才能为世界提供流动性，但赤字积累最终侵蚀信用</div>
+          <div class="k-tags"><span class="tag tag-purple">结构性</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">人民币国际化进程</div>
+          <div class="k-desc">SDR篮子份额、CIPS系统、数字人民币；理解进展速度是中长期大类资产配置的关键变量</div>
+          <div class="k-tags"><span class="tag tag-green">中国</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 3: 经济周期 ===================== -->
+<section class="section" id="cycle">
+  <div class="section-header">
+    <div class="section-icon" style="background: rgba(86,211,100,0.15);">🔄</div>
+    <div>
+      <div class="section-title">模块三：经济周期与资产轮动</div>
+      <div class="section-subtitle">识别周期位置，是超额收益最重要的来源之一</div>
+    </div>
+  </div>
+
+  <!-- 大周期嵌套 -->
+  <div class="framework-box">
+    <div class="framework-header" style="background: rgba(86,211,100,0.08); border-bottom: 1px solid var(--border);">
+      🎯 四大周期嵌套框架
+    </div>
+    <div class="framework-body">
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🌊</div>
+          <div class="pillar-name">康德拉季耶夫波<br><span style="color:var(--text2);font-size:12px">约50-60年</span></div>
+          <div class="pillar-desc">技术革命驱动的超长波；蒸汽机→电气→计算机→AI；当前处于第5波尾声/第6波起点</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🏗️</div>
+          <div class="pillar-name">库兹涅茨周期<br><span style="color:var(--text2);font-size:12px">约15-25年</span></div>
+          <div class="pillar-desc">房地产与基础设施建设周期；2008年后全球大周期房地产下行，中国2021年进入下行</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🏭</div>
+          <div class="pillar-name">朱格拉周期<br><span style="color:var(--text2);font-size:12px">约8-10年</span></div>
+          <div class="pillar-desc">设备资本投资周期；产能扩张→过剩→出清；半导体、制造业的主要分析框架</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">📦</div>
+          <div class="pillar-name">基钦周期<br><span style="color:var(--text2);font-size:12px">约3-4年</span></div>
+          <div class="pillar-desc">库存补充/去库存周期；最短期、最易量化追踪；PMI库存子项是核心观测点</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 美林时钟 -->
+  <div class="framework-box" style="margin-top: 20px;">
+    <div class="framework-header" style="background: rgba(227,179,65,0.08); border-bottom: 1px solid var(--border);">
+      🕐 美林投资时钟（扩展版）
+    </div>
+    <div class="framework-body">
+      <div class="cycle-row">
+        <div class="cycle-phase" style="background: rgba(86,211,100,0.08); border-color: rgba(86,211,100,0.3);">
+          <div class="phase-name" style="color:#56d364">🌱 复苏期</div>
+          <div class="phase-detail">增长↑ 通胀↓<br><br>利率处于底部<br>债务杠杆回升<br><br><strong>配置：</strong>股票（周期/成长）</div>
+        </div>
+        <div class="cycle-phase" style="background: rgba(88,166,255,0.08); border-color: rgba(88,166,255,0.3);">
+          <div class="phase-name" style="color:#58a6ff">🔥 过热期</div>
+          <div class="phase-detail">增长↑ 通胀↑<br><br>央行开始加息<br>需求超过产能<br><br><strong>配置：</strong>大宗商品</div>
+        </div>
+        <div class="cycle-phase" style="background: rgba(247,129,102,0.08); border-color: rgba(247,129,102,0.3);">
+          <div class="phase-name" style="color:#f78166">🌡️ 滞胀期</div>
+          <div class="phase-detail">增长↓ 通胀↑<br><br>央行持续紧缩<br>盈利开始承压<br><br><strong>配置：</strong>现金/通胀资产</div>
+        </div>
+        <div class="cycle-phase" style="background: rgba(210,168,255,0.08); border-color: rgba(210,168,255,0.3);">
+          <div class="phase-name" style="color:#d2a8ff">❄️ 衰退期</div>
+          <div class="phase-detail">增长↓ 通胀↓<br><br>央行开始降息<br>去库存、出清<br><br><strong>配置：</strong>债券</div>
+        </div>
+      </div>
+      <div class="alert alert-gold">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-text"><strong>重要修订：</strong>美林时钟在QE时代失效（流动性驱动可同时推升股债）。2020年后正确框架应叠加"央行资产负债表周期"作为额外维度。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主要经济体周期对比 -->
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#ffa657"></div>中国经济周期特殊性</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">政策周期主导</div>
+          <div class="k-desc">中国经济受政策驱动程度远高于西方；"两会"→政策信号→信用扩张→经济底</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">信用周期是核心</div>
+          <div class="k-desc">社融增速领先GDP约2-3个季度；社融拐点是判断A股底部的最重要宏观指标</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">房地产周期影响</div>
+          <div class="k-desc">房地产+相关产业占GDP约25%；2021年后进入长期去杠杆，影响长期增长中枢</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">人口周期</div>
+          <div class="k-desc">劳动年龄人口见顶（2013年）→消费结构变化→养老、医疗、新消费崛起</div>
+        </li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#58a6ff"></div>全球经济周期同步性</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">美国周期领先效应</div>
+          <div class="k-desc">美国经济通常领先全球6-12个月；美联储政策是全球资本市场的"元变量"</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">供应链重构影响</div>
+          <div class="k-desc">2018年后全球供应链碎片化，降低了各国经济周期同步性，提升了分散投资价值</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">大宗商品国的依附性</div>
+          <div class="k-desc">澳大利亚、巴西、俄罗斯等资源国周期高度依赖中国需求；能源国依赖油价</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">亚洲新兴市场特殊性</div>
+          <div class="k-desc">东南亚国家受中美贸易摩擦受益（产业转移）；但也受美元周期影响最大</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 4: 地缘政治 ===================== -->
+<section class="section" id="geopolitics">
+  <div class="section-header">
+    <div class="section-icon" style="background: rgba(247,129,102,0.15);">🌍</div>
+    <div>
+      <div class="section-title">模块四：地缘政治与国际关系</div>
+      <div class="section-subtitle">地缘冲突正在重写全球化时代建立的资产定价逻辑</div>
+    </div>
+  </div>
+
+  <div class="alert alert-red">
+    <div class="alert-icon">🚨</div>
+    <div class="alert-text"><strong>范式转变警告：</strong>2020年以后，地缘政治对投资的影响已从"尾部风险"升级为"系统性变量"。不理解地缘，就无法理解当前大类资产的定价。</div>
+  </div>
+
+  <!-- 核心地缘博弈 -->
+  <div class="framework-box">
+    <div class="framework-header" style="background: rgba(247,129,102,0.08); border-bottom: 1px solid var(--border);">
+      🎭 三大核心地缘博弈轴
+    </div>
+    <div class="framework-body">
+      <table class="matrix-table">
+        <tr>
+          <th>博弈轴</th>
+          <th>核心矛盾</th>
+          <th>投资影响</th>
+          <th>关注指标</th>
+        </tr>
+        <tr>
+          <td><strong style="color:#58a6ff">中美博弈</strong></td>
+          <td>科技脱钩、供应链重构、金融制裁工具化、台海紧张</td>
+          <td>半导体、AI、稀土、港股估值折价、A股政策溢价</td>
+          <td>芯片出口管制、关税政策、OFAC制裁名单</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#f78166">俄乌冲突</strong></td>
+          <td>欧洲能源结构重塑、北约扩张、粮食供应链重组</td>
+          <td>欧洲天然气、乌克兰粮食出口、军工股、能源转型加速</td>
+          <td>天然气价格、欧洲工业产出、北约军费承诺</td>
+        </tr>
+        <tr>
+          <td><strong style="color:#e3b341">中东局势</strong></td>
+          <td>以巴冲突、伊核谈判、OPEC+减产政策</td>
+          <td>石油价格波动、航运保险成本、黄金避险需求</td>
+          <td>布伦特/WTI价差、霍尔木兹海峡通行状态</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#58a6ff"></div>去全球化与供应链重构</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">友岸外包 (Friendshoring)</div>
+          <div class="k-desc">将供应链转移至盟友国家；越南、墨西哥、印度获益最大，直接创造10年级别产业机会</div>
+          <div class="k-tags"><span class="tag tag-green">机会</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">关键矿产争夺</div>
+          <div class="k-desc">锂、钴、镍、稀土是新能源供应链咽喉；中国控制60%以上稀土精炼产能</div>
+          <div class="k-tags"><span class="tag tag-gold">战略</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">半导体产业重构</div>
+          <div class="k-desc">《芯片法案》、《欧盟芯片法》→美欧台韩博弈加剧；先进制程地缘集中度是最大系统性风险</div>
+          <div class="k-tags"><span class="tag tag-red">风险</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">对通胀的长期影响</div>
+          <div class="k-desc">全球化压低30年通胀；去全球化将带来结构性通胀；长期债券配置逻辑需要重估</div>
+          <div class="k-tags"><span class="tag tag-purple">宏观</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#e3b341"></div>金融制裁与去美元化</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">SWIFT制裁的两面性</div>
+          <div class="k-desc">将俄罗斯踢出SWIFT使美元武器化；加速了各国推进独立结算体系的动力</div>
+          <div class="k-tags"><span class="tag tag-red">转折</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">央行黄金购买潮</div>
+          <div class="k-desc">2022年起全球央行黄金净购买量创历史新高；新兴市场央行在增持实物黄金对冲制裁风险</div>
+          <div class="k-tags"><span class="tag tag-gold">趋势</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">多极货币体系的形成</div>
+          <div class="k-desc">金砖国家结算机制、CIPS跨境系统、双边货币互换协议逐步构建"平行金融体系"</div>
+          <div class="k-tags"><span class="tag tag-purple">长期</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">美债持有方结构变化</div>
+          <div class="k-desc">中日等国减持美债规模增大；若需求不足→期限溢价上升→美债利率结构性上行</div>
+          <div class="k-tags"><span class="tag tag-red">风险</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#d2a8ff"></div>台湾问题与半导体地缘</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">台积电的战略地位</div>
+          <div class="k-desc">台积电生产全球90%以上的最先进芯片；台海任何冲突将造成全球科技产业链的灾难性断裂</div>
+          <div class="k-tags"><span class="tag tag-red">极端风险</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">半导体国产化竞赛</div>
+          <div class="k-desc">中国加速14nm以下芯片自主化；华为Kirin重回市场是重要里程碑；长期国产替代逻辑</div>
+          <div class="k-tags"><span class="tag tag-green">中国机会</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">投资组合的台海风险敞口</div>
+          <div class="k-desc">高台海风险情景下：科技股、台湾ETF、韩国三星/SK海力士均受影响；黄金避险</div>
+          <div class="k-tags"><span class="tag tag-gold">配置</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#56d364"></div>能源地缘与转型</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">OPEC+产量政策</div>
+          <div class="k-desc">沙特与俄罗斯协调产量；产油国财政平衡油价约为70-85美元/桶，这是其产量底线参考</div>
+          <div class="k-tags"><span class="tag tag-blue">核心</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">LNG贸易路线重构</div>
+          <div class="k-desc">俄乌冲突后欧洲转向美国/卡塔尔LNG；长期合同锁定→美国页岩气资本开支扩张逻辑</div>
+          <div class="k-tags"><span class="tag tag-green">机会</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">绿色转型的地缘维度</div>
+          <div class="k-desc">新能源依赖新矿产，新矿产依赖特定国家；"绿色依赖"取代"石油依赖"，格局类似</div>
+          <div class="k-tags"><span class="tag tag-gold">长期</span></div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">中国能源安全战略</div>
+          <div class="k-desc">中俄能源合作加深；电动车出口战略具有能源安全（减少石油进口）的战略考量</div>
+          <div class="k-tags"><span class="tag tag-green">中国</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <strong>"地缘政治是长期资产配置中最难量化但影响最深远的因素。"</strong> 历史上每一次大国力量格局重组，都伴随着主导货币、主要市场和核心资产类别的根本性变化。当前正处于此类转变的早期阶段。
+  </div>
+</section>
+
+<!-- ===================== SECTION 5: 市场结构 ===================== -->
+<section class="section" id="markets">
+  <div class="section-header">
+    <div class="section-icon" style="background: rgba(255,166,87,0.15);">📊</div>
+    <div>
+      <div class="section-title">模块五：全球市场结构与资产类别</div>
+      <div class="section-subtitle">理解各市场机制与资产定价逻辑</div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#58a6ff"></div>股票市场</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">估值框架</div>
+          <div class="k-desc">P/E、P/B、EV/EBITDA、DCF；周期行业用P/B，成长行业用EV/Sales</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">盈利驱动</div>
+          <div class="k-desc">EPS增长 × P/E扩张 = 股价回报；宏观决定EPS，利率决定P/E</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">风格轮动</div>
+          <div class="k-desc">利率↑→成长股承压，价值/红利受益；利率↓→成长股溢价扩张</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">A股特殊性</div>
+          <div class="k-desc">政策敏感性高、北向资金影响大、散户占比高导致情绪波动剧烈</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#d2a8ff"></div>债券市场</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">久期与利率敏感性</div>
+          <div class="k-desc">久期每延长1年，利率上升1%→价格下跌约1%；加息周期应降低组合久期</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">信用利差</div>
+          <div class="k-desc">垃圾债vs国债利差扩大→风险厌恶上升→股市领先预警指标</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">通胀保值债券 TIPS</div>
+          <div class="k-desc">实际利率直接驱动黄金；TIPS收益率是最纯粹的实际利率观测工具</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">中国债市</div>
+          <div class="k-desc">LPR改革后，10年国债收益率是宽松程度的核心观测指标</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#e3b341"></div>大宗商品</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">能源：原油定价</div>
+          <div class="k-desc">供给（OPEC+美国页岩）× 需求（中国+全球GDP）+ 地缘溢价</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">黄金定价公式</div>
+          <div class="k-desc">黄金 = f(实际利率↓, 美元↓, 地缘风险↑, 央行购买↑)</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">工业金属与中国需求</div>
+          <div class="k-desc">铜、铁矿石价格是中国基建/地产周期的晴雨表；"铜博士"预测经济</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">农产品与粮食安全</div>
+          <div class="k-desc">厄尔尼诺/拉尼娜气候 + 化肥价格 + 主产国政策；粮食通胀是政治稳定风险</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#56d364"></div>外汇市场</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">利率平价理论</div>
+          <div class="k-desc">两国利差 = 汇率预期变化；加息国货币趋于升值（套息交易原理）</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">美元指数DXY</div>
+          <div class="k-desc">美元升值→新兴市场资产承压；全球风险偏好晴雨表</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">人民币汇率机制</div>
+          <div class="k-desc">中间价管理、逆周期因子、离岸与在岸价差是资本流动的信号</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">日元套息交易</div>
+          <div class="k-desc">低息日元融资高息资产；日央行加息→套息平仓→全球资产联动下跌（2024年经历）</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#f78166"></div>房地产与另类资产</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">利率对房价的传导</div>
+          <div class="k-desc">30年房贷利率上升100bp → 月供增加约15%；严重压制可负担性与交易量</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">REITs</div>
+          <div class="k-desc">作为房地产代理工具，对长端利率高度敏感；提供流动性溢价</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">私募股权 PE/VC</div>
+          <div class="k-desc">利率上升→折现率上升→估值承压；退出窗口受IPO市场景气度影响</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">加密资产</div>
+          <div class="k-desc">流动性敏感性极高；与纳斯达克相关性强于黄金；监管不确定性是核心风险</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#79c0ff"></div>衍生品基础</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">期权与波动率</div>
+          <div class="k-desc">VIX恐慌指数 > 30 = 市场恐慌；高隐含波动率对冲成本高，但也是卖方策略机会</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">利率互换 (IRS)</div>
+          <div class="k-desc">固浮互换是机构对冲利率风险的核心工具；互换利差反映银行体系信用风险</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">信用违约互换 CDS</div>
+          <div class="k-desc">CDS价差是主权债与公司债信用风险的实时市场定价</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">商品期货基差结构</div>
+          <div class="k-desc">期货升水 vs 现货升水：Contango（远期溢价，库存充足）vs Backwardation（现货溢价，短缺）</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SECTION 6: 分析框架 ===================== -->
+<section class="section" id="framework">
+  <div class="section-header">
+    <div class="section-icon" style="background: rgba(88,166,255,0.15);">🧠</div>
+    <div>
+      <div class="section-title">模块六：投资者的分析框架与思维工具</div>
+      <div class="section-subtitle">将知识转化为可执行决策的方法论</div>
+    </div>
+  </div>
+
+  <!-- 三层分析架构 -->
+  <div class="framework-box">
+    <div class="framework-header" style="background: rgba(88,166,255,0.08); border-bottom: 1px solid var(--border);">
+      🏗️ 自上而下：三层分析架构
+    </div>
+    <div class="framework-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-title" style="color:#58a6ff">第一层：宏观情景构建（Top-Down）</div>
+          <div class="tl-desc">
+            判断当前经济周期位置 → 中央银行政策方向 → 全球流动性格局 → 地缘风险溢价水平<br>
+            输出：<strong>战略资产配置（SAA）</strong>，决定股/债/商品/现金的大类配比
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-title" style="color:#56d364">第二层：行业与区域选择（Middle-Down）</div>
+          <div class="tl-desc">
+            在宏观框架内选择受益行业（如加息→金融；经济复苏→周期股）→ 地区估值对比 → 政策催化剂<br>
+            输出：<strong>战术资产配置（TAA）</strong>，行业/地区超/低配
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-title" style="color:#d2a8ff">第三层：个股/债券选择（Bottom-Up）</div>
+          <div class="tl-desc">
+            竞争壁垒（护城河）→ 盈利质量与增长预测 → 估值安全边际 → 催化剂与时间窗口<br>
+            输出：<strong>具体标的选择与买卖点判断</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 关键思维工具 -->
+  <div class="grid-2" style="margin-top: 20px;">
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#e3b341"></div>必知的经济学原理</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">边际思维</div>
+          <div class="k-desc">市场定价永远反映边际预期变化；已知信息已在价格中，超预期才是驱动因素</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">机会成本</div>
+          <div class="k-desc">"无风险利率"是所有风险资产的定价基准；无风险利率上升→所有风险资产的合理估值下降</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">货币数量论 MV=PQ</div>
+          <div class="k-desc">货币量×流通速度=价格水平×实际产出；流通速度下降是货币宽松不引发通胀的关键</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">反身性理论（索罗斯）</div>
+          <div class="k-desc">市场参与者的预期影响基本面，基本面再影响预期；泡沫形成与崩溃的核心机制</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">比较优势与贸易理论</div>
+          <div class="k-desc">理解贸易赤字/顺差形成机制；贸易战的经济损失与政治逻辑的博弈</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#f78166"></div>风险管理框架</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">黑天鹅 vs 灰犀牛</div>
+          <div class="k-desc">黑天鹅：不可预测的极端冲击；灰犀牛：显而易见但被忽视的高概率风险（如债务危机）</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">Kelly公式与仓位管理</div>
+          <div class="k-desc">Kelly% = (胜率×盈亏比 - 亏率) / 盈亏比；理论最优但实践中用半Kelly降低波动</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">相关性失效风险</div>
+          <div class="k-desc">危机时期所有资产相关性趋向1；分散化在最需要时往往失效，需纳入真正的非相关资产</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">流动性风险</div>
+          <div class="k-desc">非流动溢价≠收益率；危机时流动性枯竭，能否在需要时退出比收益率更重要</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">尾部风险对冲</div>
+          <div class="k-desc">长期持有OTM看跌期权/VIX看涨期权；成本高但在极端情景下有决定性保护作用</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#56d364"></div>情景分析方法</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">牛/熊/基准三情景</div>
+          <div class="k-desc">为每个核心变量设定三种情景；组合下的期望回报 = Σ(概率 × 回报)；决策基于期望值</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">逆向测试</div>
+          <div class="k-desc">先问"什么情况下我的判断是错的"，比构建支持论据更有价值（第一性原则）</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">历史类比法</div>
+          <div class="k-desc">寻找历史上类似的宏观情景；1970s滞胀、1998亚洲金融危机、2008GFC提供锚定</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">地缘情景矩阵</div>
+          <div class="k-desc">构建"地缘升级 × 经济走势"二维矩阵，为极端情景（如台海、中东战争）预设应对方案</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="dot" style="background:#79c0ff"></div>行为金融学陷阱</div>
+      <ul class="k-list">
+        <li class="k-item">
+          <div class="k-name">确认偏误</div>
+          <div class="k-desc">主动寻找反对自己观点的信息；保持"反方档案"，为持仓定期写空头报告</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">锚定效应</div>
+          <div class="k-desc">不要被历史价格锚定；以当前基本面重新估值，忘记买入成本</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">处置效应</div>
+          <div class="k-desc">过早卖出盈利，过久持有亏损；应该做的是截断亏损、让利润奔跑</div>
+        </li>
+        <li class="k-item">
+          <div class="k-name">叙事谬误</div>
+          <div class="k-desc">大脑偏好有因果逻辑的故事；警惕过度自洽的投资叙事掩盖基本面的真实恶化</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 专业阅读书单 -->
+  <div class="framework-box" style="margin-top: 20px;">
+    <div class="framework-header" style="background: rgba(227,179,65,0.08); border-bottom: 1px solid var(--border);">
+      📚 专业投资者推荐书单与资源
+    </div>
+    <div class="framework-body">
+      <div class="grid-3">
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:10px;">宏观经济</div>
+          <ul class="checklist">
+            <li><strong>《宏观经济学》</strong>曼昆 — 最权威入门</li>
+            <li><strong>《当代货币理论》</strong>L. Randall Wray — MMT视角</li>
+            <li><strong>《债务危机》</strong>Ray Dalio — 周期模板</li>
+            <li><strong>《大衰退》</strong>辜朝明 — 资产负债表衰退理论</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--accent3); margin-bottom:10px;">地缘与政治经济</div>
+          <ul class="checklist">
+            <li><strong>《地理与命运》</strong>罗伯特·卡普兰</li>
+            <li><strong>《大国政治的悲剧》</strong>米尔斯海默</li>
+            <li><strong>《世界秩序》</strong>基辛格</li>
+            <li><strong>《枢纽》</strong>施展 — 中国地缘战略视角</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--gold); margin-bottom:10px;">投资实战</div>
+          <ul class="checklist">
+            <li><strong>《随机漫步的傻瓜》</strong>塔勒布</li>
+            <li><strong>《逃不开的经济周期》</strong>拉斯·特维德</li>
+            <li><strong>《聪明的投资者》</strong>格雷厄姆</li>
+            <li><strong>Global Macro Investor</strong>Raoul Pal — 宏观报告</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 专业投资者日常监控清单 -->
+  <div class="framework-box" style="margin-top: 20px;">
+    <div class="framework-header" style="background: rgba(86,211,100,0.08); border-bottom: 1px solid var(--border);">
+      ✅ 专业投资者日常监控清单
+    </div>
+    <div class="framework-body">
+      <div class="grid-3">
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--accent3); margin-bottom:10px;">每日必看</div>
+          <ul class="checklist">
+            <li>美债10Y收益率变动</li>
+            <li>美元指数DXY走势</li>
+            <li>VIX恐慌指数水平</li>
+            <li>离岸人民币汇率</li>
+            <li>原油/黄金价格</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--gold); margin-bottom:10px;">每周必看</div>
+          <ul class="checklist">
+            <li>美联储讲话/FOMC纪要</li>
+            <li>中国社融/M2数据</li>
+            <li>全球PMI数据汇总</li>
+            <li>北向资金净流入</li>
+            <li>原油库存报告 (EIA)</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:13px; font-weight:600; color:var(--accent4); margin-bottom:10px;">每月必看</div>
+          <ul class="checklist">
+            <li>美国CPI/PCE发布</li>
+            <li>非农就业报告</li>
+            <li>中国进出口数据</li>
+            <li>主要央行利率决议</li>
+            <li>各国GDP初值/修正</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div> <!-- end container -->
+
+<div class="footer">
+  <p>专业投资者知识体系 · 经济 × 地缘 | 本文件仅供学习研究，不构成投资建议</p>
+  <p style="margin-top:8px; font-size:12px;">持续迭代更新 · 知识体系需结合实际市场经验不断修正</p>
+</div>
+
+<script>
+// Active nav pill on scroll
+const sections = document.querySelectorAll('.section');
+const navPills = document.querySelectorAll('.nav-pill');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navPills.forEach(pill => {
+        pill.classList.toggle('active', pill.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+// Smooth scroll
+navPills.forEach(pill => {
+  pill.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(pill.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
